@@ -88,6 +88,21 @@ The first run showed recall was saturated, so there is a second dataset, `evals/
 
 Some facts on this set have more than one defensible answer, such as pro forma versus standalone revenue. Their labels list every accepted figure instead of picking one. The share of the largest customer sometimes has to be computed from a dollar amount.
 
+**Hard-set results, 31 Oct 2026** (6 cases × 2 reps; raw data in [`results/2026-10-31/`](results/2026-10-31/)):
+
+| | Opus 5.5 · v2 | Haiku 5.5 low · v2 | Haiku 5.5 low · v1 |
+|---|---|---|---|
+| Red-flag recall | 100% | 97% (92–100) | 100% |
+| · needs arithmetic | 100% | 88% (62–100) | 100% |
+| · in a footnote | 100% | 100% | 100% |
+| · needs two sections joined | 100% | 100% | 100% |
+| **Decoy false-alarm rate** | **0%** | **21%** (8–33) | **57%** (50–65) |
+| Agent cost per screen | $0.043 | $0.001 | $0.001 |
+
+1. **Opus 5.5 did the arithmetic.** The CIMs never state the derived numbers, yet Opus found every one of them: the $1.0M the EBITDA bridge does not explain, DSO going from 56 to 74 days, deferred revenue falling 20% while revenue grew 15%. I read the transcripts to confirm the judge's verdicts. On this set Opus is at the ceiling, so the next harder set needs full-length documents rather than cleverer sentences.
+2. **The prompt matters for the small model, not the large one.** On Opus, v1 and v2 tie. On Haiku, v2 cut false alarms from 57% to 21%. That is a paired difference of −36 points, 95% CI [−54, −22], the one comparison in this repo whose interval clears zero. The recall cost is within noise. v2's rules about resolved items are doing real work, where the model needs them.
+3. **This sets up a real trade-off.** Haiku with v2 costs about a fortieth of Opus per screen. It still raises one false alarm in five and missed one arithmetic flag once in four tries. Whether that is acceptable depends on who reads the screen next, and that is a question for the deal team, not the eval.
+
 ## Quickstart
 
 ```bash
