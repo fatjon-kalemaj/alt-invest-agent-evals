@@ -1,0 +1,11 @@
+{
+  "case_id": "08-solstice",
+  "company_name": "Solstice Home Services",
+  "facts": {"revenue_ltm_musd": 73.3, "ebitda_ltm_musd": 10.8, "revenue_growth_pct": 12, "top_customer_pct": null},
+  "planted_flags": [],
+  "decoys": [
+    {"id": "founder_retiring", "issue": "Founder retiring at closing", "evidence": "has run day-to-day operations since"},
+    {"id": "settled_lawsuit", "issue": "Wage-and-hour class action", "evidence": "fully covered by insurance"}
+  ],
+  "acceptable_recommendations": ["pursue", "needs_more_info"]
+}

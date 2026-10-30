@@ -1,0 +1,17 @@
+{
+  "case_id": "06-atlas",
+  "company_name": "Atlas Precision Components",
+  "facts": {"revenue_ltm_musd": 96.8, "ebitda_ltm_musd": 17.2, "revenue_growth_pct": 9, "top_customer_pct": 29},
+  "planted_flags": [
+    {"id": "inventory_build", "category": "working_capital",
+     "issue": "Inventory days jumped from 62 to 108 and the revolver was drawn to fund working capital.",
+     "evidence": "Inventory days increased from 62 to 108 over the last twelve months"},
+    {"id": "soft_backlog", "category": "revenue_quality",
+     "issue": "$40M of the $210M backlog is unconverted letters of intent, not firm orders.",
+     "evidence": "This figure includes $40 million of letters of intent that have not yet been converted to purchase orders."}
+  ],
+  "decoys": [
+    {"id": "union", "issue": "Unionized workforce", "evidence": "The collective bargaining agreement was renewed last year and runs through 2030"}
+  ],
+  "acceptable_recommendations": ["needs_more_info", "pass", "pursue"]
+}

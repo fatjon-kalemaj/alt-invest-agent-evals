@@ -1,0 +1,17 @@
+{
+  "case_id": "03-northwind",
+  "company_name": "Northwind Fieldware",
+  "facts": {"revenue_ltm_musd": 31.5, "ebitda_ltm_musd": 4.1, "revenue_growth_pct": 41, "top_customer_pct": 3.8},
+  "planted_flags": [
+    {"id": "nrr_decline", "category": "churn_retention",
+     "issue": "Net revenue retention fell from 104% to 88% after a price increase, signalling churn among smaller customers.",
+     "evidence": "Net revenue retention for the trailing twelve months was 88%, compared with 104% in the prior year"},
+    {"id": "ip_owned_by_cto", "category": "key_person",
+     "issue": "Core patent is owned personally by the CTO and licensed on a license terminable on 90 days' notice.",
+     "evidence": "licensed to the company under a five-year license agreement that is terminable by either party on 90 days' notice."}
+  ],
+  "decoys": [
+    {"id": "gross_margin_dip", "issue": "Gross margin fell two points", "evidence": "which was completed in May"}
+  ],
+  "acceptable_recommendations": ["needs_more_info", "pass"]
+}

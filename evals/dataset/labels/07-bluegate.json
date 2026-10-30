@@ -1,0 +1,17 @@
+{
+  "case_id": "07-bluegate",
+  "company_name": "Bluegate Payments",
+  "facts": {"revenue_ltm_musd": 44.9, "ebitda_ltm_musd": 6.0, "revenue_growth_pct": 27, "top_customer_pct": 0.6},
+  "planted_flags": [
+    {"id": "gross_revenue", "category": "revenue_quality",
+     "issue": "Revenue is reported gross of pass-through interchange; net revenue is only $15.2M, so revenue-based valuation is inflated ~3x.",
+     "evidence": "net revenue after those pass-through costs was $15.2 million."},
+    {"id": "sponsor_bank_consent_order", "category": "legal_regulatory",
+     "issue": "Its only sponsor bank is under a regulatory consent order on third-party payment oversight.",
+     "evidence": "the sponsor bank entered into a consent order with its federal regulator"}
+  ],
+  "decoys": [
+    {"id": "q1_slowdown", "issue": "Growth slowed to 11% in Q1", "evidence": "consistent with the seasonal pattern of the restaurant segment in each of the past four years"}
+  ],
+  "acceptable_recommendations": ["needs_more_info", "pass"]
+}

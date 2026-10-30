@@ -1,0 +1,17 @@
+{
+  "case_id": "04-copperleaf",
+  "company_name": "Copperleaf Specialty Foods",
+  "facts": {"revenue_ltm_musd": 118.0, "ebitda_ltm_musd": 14.9, "revenue_growth_pct": 6, "top_customer_pct": 24},
+  "planted_flags": [
+    {"id": "single_copacker", "category": "supplier_concentration",
+     "issue": "One co-packer makes ~70% of volume on an annually renewing agreement, and it was the site of the recall.",
+     "evidence": "A single co-packer, Valley Fresh Co-Pack, produces approximately 70% of the company's volume"},
+    {"id": "recall_litigation", "category": "legal_regulatory",
+     "issue": "Pending recall-related injury lawsuits where the insurer has reserved its rights on coverage.",
+     "evidence": "the company's insurer has reserved its rights regarding coverage."}
+  ],
+  "decoys": [
+    {"id": "input_costs", "issue": "Commodity input cost exposure", "evidence": "hedged through 12-month fixed-price contracts covering roughly 80% of expected volume"}
+  ],
+  "acceptable_recommendations": ["needs_more_info", "pass"]
+}

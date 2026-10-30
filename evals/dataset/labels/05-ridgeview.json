@@ -1,0 +1,17 @@
+{
+  "case_id": "05-ridgeview",
+  "company_name": "Ridgeview Behavioral Health",
+  "facts": {"revenue_ltm_musd": 67.4, "ebitda_ltm_musd": null, "revenue_growth_pct": 18, "top_customer_pct": 61},
+  "planted_flags": [
+    {"id": "medicaid_rate_cut", "category": "legal_regulatory",
+     "issue": "61% of revenue comes from Ohio Medicaid, which has proposed a 7% reimbursement rate cut.",
+     "evidence": "has published a proposed 7% reduction in outpatient behavioral health reimbursement rates"},
+    {"id": "no_ebitda", "category": "quality_of_earnings",
+     "issue": "No EBITDA figure is given, only a management estimate of margin; profitability is unverified.",
+     "evidence": "Management estimates Adjusted EBITDA margin in the high teens"}
+  ],
+  "decoys": [
+    {"id": "clinician_turnover", "issue": "19% clinician turnover", "evidence": "in line with industry benchmarks"}
+  ],
+  "acceptable_recommendations": ["needs_more_info", "pass"]
+}

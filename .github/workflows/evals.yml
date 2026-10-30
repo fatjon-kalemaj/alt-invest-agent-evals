@@ -1,0 +1,42 @@
+name: evals
+# Live evals cost money, so they run on demand or when a PR is labelled run-evals,
+# never on every push.
+on:
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: Prompt version
+        default: v2
+      reps:
+        description: Reps per case
+        default: "2"
+  pull_request:
+    types: [labeled, synchronize]
+
+jobs:
+  live:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'run-evals')
+    runs-on: ubuntu-latest
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv sync
+      - name: Run eval
+        run: uv run cimeval run --agent claude --prompt "${{ inputs.prompt || 'v2' }}" --reps "${{ inputs.reps || '2' }}" --out runs
+      - name: Compare with committed baseline
+        run: |
+          NEW=$(ls -d runs/*/ | tail -1)
+          cat "$NEW/report.md" >> "$GITHUB_STEP_SUMMARY"
+          if [ ! -f results/baseline/summary.json ]; then
+            echo "No committed baseline yet; skipping comparison." | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          echo '#### vs. baseline' >> "$GITHUB_STEP_SUMMARY"
+          uv run cimeval compare results/baseline/summary.json "$NEW/summary.json" | tee -a "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eval-run
+          path: runs/

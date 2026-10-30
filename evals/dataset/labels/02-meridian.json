@@ -1,0 +1,17 @@
+{
+  "case_id": "02-meridian",
+  "company_name": "Meridian Dental Partners",
+  "facts": {"revenue_ltm_musd": 52.0, "ebitda_ltm_musd": 8.3, "revenue_growth_pct": 22, "top_customer_pct": null},
+  "planted_flags": [
+    {"id": "negative_organic", "category": "revenue_quality",
+     "issue": "Headline 22% growth is entirely acquired; same-store revenue actually declined 2%.",
+     "evidence": "Same-store revenue at practices owned for more than twelve months declined 2% over the same period."},
+    {"id": "medicaid_audit", "category": "legal_regulatory",
+     "issue": "Pending state Medicaid claims audit across 12 practices with unestimated recoupment exposure.",
+     "evidence": "The audit is ongoing and management has not estimated potential recoupment."}
+  ],
+  "decoys": [
+    {"id": "capex_increase", "issue": "Capex rose to $4.6M", "evidence": "maintenance capex has averaged 1.5% of revenue over three years"}
+  ],
+  "acceptable_recommendations": ["needs_more_info", "pass"]
+}

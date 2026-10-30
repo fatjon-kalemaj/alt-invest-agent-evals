@@ -1,0 +1,18 @@
+{
+  "case_id": "01-harborline",
+  "company_name": "Harborline Logistics",
+  "facts": {"revenue_ltm_musd": 84.2, "ebitda_ltm_musd": 11.6, "revenue_growth_pct": 14, "top_customer_pct": 38},
+  "planted_flags": [
+    {"id": "concentration_expiring", "category": "customer_concentration",
+     "issue": "Largest customer is 38% of revenue and its contract expires next March with no renewal talks started.",
+     "evidence": "The master services agreement with this customer expires in March of next year and renewal discussions have not yet begun."},
+    {"id": "recurring_addbacks", "category": "quality_of_earnings",
+     "issue": "$3.1M of 'non-recurring' add-backs recur every year, so Adjusted EBITDA is overstated (closer to $8.5M).",
+     "evidence": "Similar facility transition add-backs were also taken in each of the prior two fiscal years."}
+  ],
+  "decoys": [
+    {"id": "q3_dip", "issue": "Revenue dip in Q3 of prior year", "evidence": "volumes fully recovered in the fourth quarter"},
+    {"id": "cfo_change", "issue": "CFO departure", "evidence": "was appointed CFO in February after a completed search"}
+  ],
+  "acceptable_recommendations": ["needs_more_info", "pass"]
+}
