@@ -1,0 +1,136 @@
+{
+  "quality": {
+    "flag_recall": {
+      "mean": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_cases": 7,
+      "per_case": {
+        "01-harborline": 1.0,
+        "02-meridian": 1.0,
+        "03-northwind": 1.0,
+        "04-copperleaf": 1.0,
+        "05-ridgeview": 1.0,
+        "06-atlas": 1.0,
+        "07-bluegate": 1.0
+      }
+    },
+    "followup_coverage": {
+      "mean": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_cases": 7,
+      "per_case": {
+        "01-harborline": 1.0,
+        "02-meridian": 1.0,
+        "03-northwind": 1.0,
+        "04-copperleaf": 1.0,
+        "05-ridgeview": 1.0,
+        "06-atlas": 1.0,
+        "07-bluegate": 1.0
+      }
+    },
+    "decoy_false_alarm": {
+      "mean": 0.8125,
+      "ci95": [
+        0.625,
+        0.9375
+      ],
+      "n_cases": 8,
+      "per_case": {
+        "01-harborline": 0.5,
+        "02-meridian": 1.0,
+        "03-northwind": 1.0,
+        "04-copperleaf": 0.5,
+        "05-ridgeview": 1.0,
+        "06-atlas": 1.0,
+        "07-bluegate": 1.0,
+        "08-solstice": 0.5
+      }
+    },
+    "grounding": {
+      "mean": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_cases": 8,
+      "per_case": {
+        "01-harborline": 1.0,
+        "02-meridian": 1.0,
+        "03-northwind": 1.0,
+        "04-copperleaf": 1.0,
+        "05-ridgeview": 1.0,
+        "06-atlas": 1.0,
+        "07-bluegate": 1.0,
+        "08-solstice": 1.0
+      }
+    },
+    "fact_accuracy": {
+      "mean": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_cases": 8,
+      "per_case": {
+        "01-harborline": 1.0,
+        "02-meridian": 1.0,
+        "03-northwind": 1.0,
+        "04-copperleaf": 1.0,
+        "05-ridgeview": 1.0,
+        "06-atlas": 1.0,
+        "07-bluegate": 1.0,
+        "08-solstice": 1.0
+      }
+    },
+    "abstention": {
+      "mean": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_cases": 3,
+      "per_case": {
+        "02-meridian": 1.0,
+        "05-ridgeview": 1.0,
+        "08-solstice": 1.0
+      }
+    },
+    "recommendation_ok": {
+      "mean": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_cases": 8,
+      "per_case": {
+        "01-harborline": 1.0,
+        "02-meridian": 1.0,
+        "03-northwind": 1.0,
+        "04-copperleaf": 1.0,
+        "05-ridgeview": 1.0,
+        "06-atlas": 1.0,
+        "07-bluegate": 1.0,
+        "08-solstice": 1.0
+      }
+    }
+  },
+  "ops": {
+    "n_cases": 8,
+    "status_counts": {
+      "ok": 16
+    },
+    "harness_errors": 0,
+    "agent_cost_per_screen": "$0.0010",
+    "judge_cost_per_screen": "$0.0142",
+    "agent_cost_total_usd": 0.0158,
+    "judge_cost_total_usd": 0.2265,
+    "latency_p50_s": 8.1,
+    "latency_max_s": 9.2
+  }
+}

@@ -54,7 +54,27 @@ These are the choices that make the numbers mean something. [docs/design.md](doc
 
 ## Results
 
-No numbers are published yet; this table is filled from a real run, not written by hand. Reproduce with `make eval`. The output lands in `runs/<id>/report.md`, and the baseline is committed to `results/baseline/`.
+First live run, 30 Oct 2026: 8 cases × 2 reps per configuration. The judge (`claude-sonnet-5-5`) agreed with all 13 hand-labelled calibration verdicts. No harness errors, truncations or refusals. Raw rows, configs and reports are in [`results/2026-10-30/`](results/2026-10-30/).
+
+| | Opus 5.5 · prompt v2 | Opus 5.5 · prompt v1 | Haiku 5.5 · low effort · v1 |
+|---|---|---|---|
+| Red-flag recall | 100% | 100% | 100% |
+| Follow-up question coverage | 100% | 100% | 100% |
+| **Decoy false-alarm rate** | **12%** (0–38) | **12%** (0–38) | **81%** (62–94) |
+| Evidence quotes found verbatim | 100% | 100% | 100% |
+| Fact accuracy / abstention | 100% / 100% | 100% / 100% | 100% / 100% |
+| Recommendation acceptable | 100% | 100% | 100% |
+| Agent cost per screen | $0.035 | $0.033 | $0.001 |
+| Latency p50 | 12.7s | 12.8s | 8.1s |
+
+What this shows, including what it does not:
+
+1. **Recall is saturated.** Every configuration found all 14 planted flags, even the smallest model at low effort. In two-page documents the issues are findable by everyone, so the recall metric cannot rank models. The next version needs longer documents and subtler issues: ones that need arithmetic across sections, or that hide in a table footnote.
+2. **The decoys do the discriminating.** Haiku also flagged 81% of the resolved non-issues, while Opus flagged 12%. An eval that measured recall alone would have called the two models equal. This is the reason the decoys exist.
+3. **The tuned prompt (v2) made no measurable difference** to v1 on this set (`cimeval compare` returns "within noise" on every metric). So on this evidence the shorter prompt is as good. The case for v2 has to come from a harder set, or it should be dropped.
+4. **All of Opus's false alarms are on one decoy, and the label may be wrong.** Meridian's $4.6M capex is labelled as resolved, because the CIM explains it is growth capex. Opus argued, in all four runs, that capex at 55% of EBITDA still hurts cash conversion whatever it is called. That is a defensible diligence point, so the label is under review rather than counted as a clear model error.
+
+`results/baseline/` holds the Opus 5.5 · v2 run that CI compares against.
 
 ## Quickstart
 
