@@ -1,0 +1,40 @@
+{
+  "case_id": "h06-orion",
+  "company_name": "Orion Managed IT",
+  "facts": {
+    "revenue_ltm_musd": 38.7,
+    "ebitda_ltm_musd": 7.9,
+    "revenue_growth_pct": 11,
+    "top_customer_pct": 3.2
+  },
+  "planted_flags": [
+    {
+      "id": "month_to_month",
+      "category": "revenue_quality",
+      "difficulty": "cross_reference",
+      "issue": "The company markets 94% recurring revenue, but 41% of recurring revenue is on month-to-month terms that customers can cancel at any time.",
+      "evidence": "Month-to-month agreements account for 41% of monthly recurring revenue."
+    }
+  ],
+  "decoys": [
+    {
+      "id": "q2_churn",
+      "issue": "Revenue churn spike to 6% in Q2",
+      "evidence": "excluding these planned exits, churn was 0.8%, in line with the trailing average."
+    },
+    {
+      "id": "ceo_transition",
+      "issue": "Founder CEO stepped down",
+      "evidence": "appointed CEO under a succession plan approved by the board in 2023."
+    },
+    {
+      "id": "ransomware",
+      "issue": "Client ransomware incident",
+      "evidence": "A forensic review found no Orion liability"
+    }
+  ],
+  "acceptable_recommendations": [
+    "pursue",
+    "needs_more_info"
+  ]
+}

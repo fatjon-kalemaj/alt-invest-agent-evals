@@ -24,7 +24,7 @@ from cimscreen.schema import Screen
 
 from . import report
 from .baselines import null_screen, oracle_screen
-from .dataset import DATASET_DIR, Case, dataset_hash, load_cases
+from .dataset import DATASET_DIR, DATASETS, Case, dataset_hash, load_cases
 from .graders import grade_code
 from .judge import DEFAULT_JUDGE_MODEL, grade_judged, judge_decoy, judge_flag
 from .stats import LOWER_IS_BETTER, METRICS, paired_diff, summarize
@@ -82,19 +82,20 @@ def run_one(args, client, case: Case, rep: int) -> tuple[dict | None, dict | Non
 
 
 def cmd_run(args) -> int:
-    cases = load_cases(only=args.cases.split(",") if args.cases else None)
+    dataset_dir = DATASETS[args.dataset]
+    cases = load_cases(dataset_dir, only=args.cases.split(",") if args.cases else None)
     needs_api = args.agent == "claude" or not args.no_judge
     client = anthropic.Anthropic(max_retries=0, timeout=300.0) if needs_api else None
 
     prompt_text = (PROMPTS_DIR / f"{args.prompt}.md").read_text()
-    run_id = time.strftime("%Y%m%d-%H%M%S") + f"-{args.agent}-{args.prompt}"
+    run_id = time.strftime("%Y%m%d-%H%M%S") + f"-{args.dataset}-{args.agent}-{args.prompt}"
     out = Path(args.out) / run_id
     (out / "transcripts").mkdir(parents=True)
     config = {
         "run_id": run_id, "agent": args.agent, "prompt_version": args.prompt,
         "prompt_sha": hashlib.sha256(prompt_text.encode()).hexdigest()[:12],
         "model": args.model if args.agent == "claude" else args.agent, "effort": args.effort, "reps": args.reps,
-        "judge_model": None if args.no_judge else args.judge_model, "dataset_hash": dataset_hash(), "git_sha": _git_sha(),
+        "judge_model": None if args.no_judge else args.judge_model, "dataset": args.dataset, "dataset_hash": dataset_hash(dataset_dir), "git_sha": _git_sha(),
     }
     (out / "config.json").write_text(json.dumps(config, indent=2))
 
@@ -188,6 +189,7 @@ def main(argv=None) -> int:
     r.add_argument("--model", default=DEFAULT_MODEL)
     r.add_argument("--effort", default="medium", choices=["low", "medium", "high", "xhigh", "max"])
     r.add_argument("--reps", type=int, default=1)
+    r.add_argument("--dataset", choices=sorted(DATASETS), default="core")
     r.add_argument("--cases", help="comma-separated case ids (default: all)")
     r.add_argument("--judge-model", default=DEFAULT_JUDGE_MODEL)
     r.add_argument("--no-judge", action="store_true", help="code graders only; no API calls for grading")

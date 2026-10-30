@@ -123,7 +123,7 @@ def grade_judged(client, model: str, labels: dict, screen: Screen) -> tuple[dict
     records, usage = [], {}
     for flag in labels["planted_flags"]:
         call = judge_flag(client, model, flag, screen)
-        records.append({"kind": "flag", "id": flag["id"], **call.verdict.model_dump()})
+        records.append({"kind": "flag", "id": flag["id"], "difficulty": flag.get("difficulty"), **call.verdict.model_dump()})
         usage = {k: usage.get(k, 0) + v for k, v in call.usage.items()}
     for decoy in labels["decoys"]:
         call = judge_decoy(client, model, decoy, screen)
@@ -137,4 +137,9 @@ def grade_judged(client, model: str, labels: dict, screen: Screen) -> tuple[dict
         "followup_coverage": (sum(r["followup_question"] for r in flags) / len(flags)) if flags else None,
         "decoy_false_alarm": (sum(r["raised_as_open_risk"] for r in decoys) / len(decoys)) if decoys else None,
     }
+    # The hard set tags each flag by what it takes to find it; report recall per tag.
+    for tag in ("arithmetic", "footnote", "cross_reference"):
+        tagged = [r for r in flags if r["difficulty"] == tag]
+        if tagged:
+            metrics[f"recall_{tag}"] = sum(r["identified"] for r in tagged) / len(tagged)
     return metrics, records, usage

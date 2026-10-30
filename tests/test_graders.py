@@ -1,11 +1,11 @@
 import pytest
 
 from cimeval.baselines import null_screen, oracle_screen
-from cimeval.dataset import load_cases
+from cimeval.dataset import DATASETS, load_cases
 from cimeval.graders import fact_correct, grade_code, quote_in_document
 from cimscreen.schema import FlagCategory, RedFlag
 
-CASES = load_cases()
+CASES = load_cases(DATASETS["core"]) + load_cases(DATASETS["hard"])
 
 
 @pytest.mark.parametrize("case", CASES, ids=lambda c: c.case_id)
@@ -15,6 +15,14 @@ def test_oracle_scores_perfectly_on_code_graders(case):
     assert g["recommendation_ok"] == 1.0
     assert g["abstention"] in (None, 1.0)
     assert g["grounding"] in (None, 1.0)
+
+
+def test_any_of_label_accepts_each_listed_figure():
+    expected = {"any_of": [14.2, 19.1]}
+    assert fact_correct("ebitda_ltm_musd", expected, 14.2)
+    assert fact_correct("ebitda_ltm_musd", expected, 19.1)
+    assert not fact_correct("ebitda_ltm_musd", expected, 16.0)
+    assert not fact_correct("ebitda_ltm_musd", expected, None)
 
 
 def test_null_baseline_fails_facts():

@@ -5,7 +5,9 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 
-DATASET_DIR = Path(__file__).resolve().parents[2] / "evals" / "dataset"
+EVALS_DIR = Path(__file__).resolve().parents[2] / "evals"
+DATASETS = {"core": EVALS_DIR / "dataset", "hard": EVALS_DIR / "dataset_hard"}
+DATASET_DIR = DATASETS["core"]
 FACT_FIELDS = ("revenue_ltm_musd", "ebitda_ltm_musd", "revenue_growth_pct", "top_customer_pct")
 
 

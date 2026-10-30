@@ -40,7 +40,8 @@ class Financials(BaseModel):
         description="Most recent year-over-year total revenue growth in percent. Null if not stated."
     )
     top_customer_pct: float | None = Field(
-        description="Share of revenue from the single largest customer or payer, in percent. Null if not stated."
+        description="Share of revenue from the single largest customer or payer, in percent. "
+        "If the document gives that customer's revenue in dollars, compute the share. Null if it cannot be determined."
     )
 
 

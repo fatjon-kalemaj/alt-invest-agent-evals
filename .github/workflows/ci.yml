@@ -16,3 +16,4 @@ jobs:
       - run: uv run pytest -q
       - run: uv run cimeval run --agent oracle --no-judge
       - run: uv run cimeval run --agent null --no-judge
+      - run: uv run cimeval run --dataset hard --agent oracle --no-judge

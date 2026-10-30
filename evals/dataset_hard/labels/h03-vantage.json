@@ -1,0 +1,49 @@
+{
+  "case_id": "h03-vantage",
+  "company_name": "Vantage Learning Systems",
+  "facts": {
+    "revenue_ltm_musd": 48.6,
+    "ebitda_ltm_musd": 9.4,
+    "revenue_growth_pct": 15,
+    "top_customer_pct": 2.1
+  },
+  "planted_flags": [
+    {
+      "id": "capitalized_dev",
+      "category": "quality_of_earnings",
+      "difficulty": "cross_reference",
+      "issue": "Capitalized software development jumped from $1.2M to $5.8M, moving development spend out of EBITDA; EBITDA less capitalized software fell from about $5.9M to $3.6M.",
+      "evidence": "Capitalized software development costs were $5.8 million, compared with $1.2 million in the prior year"
+    },
+    {
+      "id": "deferred_revenue_decline",
+      "category": "revenue_quality",
+      "difficulty": "arithmetic",
+      "issue": "Deferred revenue fell about 20% ($22.0M to $17.5M) while revenue grew 15%; with annual upfront invoicing this signals weaker bookings ahead.",
+      "evidence": "Deferred revenue was $17.5 million at June 30, compared with $22.0 million a year earlier."
+    },
+    {
+      "id": "esser_cliff",
+      "category": "revenue_quality",
+      "difficulty": "footnote",
+      "issue": "About a third of bookings were funded by federal ESSER relief money that expires, creating a renewal cliff.",
+      "evidence": "Approximately 34% of current-year bookings were funded by districts from federal ESSER relief funds"
+    }
+  ],
+  "decoys": [
+    {
+      "id": "soc2_exception",
+      "issue": "Prior-year SOC 2 exception",
+      "evidence": "the current-year report contains no exceptions."
+    },
+    {
+      "id": "q4_churn",
+      "issue": "Logo churn rose to 9% in Q4",
+      "evidence": "churn excluding the retired product was 3%, consistent with prior years."
+    }
+  ],
+  "acceptable_recommendations": [
+    "needs_more_info",
+    "pass"
+  ]
+}

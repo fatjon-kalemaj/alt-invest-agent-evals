@@ -1,0 +1,67 @@
+{
+  "case_id": "h04-granite",
+  "company_name": "Granite Peak Waste Services",
+  "facts": {
+    "revenue_ltm_musd": {
+      "any_of": [
+        142.5,
+        118.3
+      ]
+    },
+    "ebitda_ltm_musd": {
+      "any_of": [
+        31.2,
+        25.9
+      ]
+    },
+    "revenue_growth_pct": 8,
+    "top_customer_pct": {
+      "any_of": [
+        13.6,
+        16.4
+      ]
+    }
+  },
+  "derived_facts": [
+    "top_customer_pct"
+  ],
+  "planted_flags": [
+    {
+      "id": "unclosed_proforma",
+      "category": "quality_of_earnings",
+      "difficulty": "cross_reference",
+      "issue": "Headline revenue and EBITDA include Ridge Hauling, an acquisition that has not closed and needs regulatory approval; standalone EBITDA is $25.9M, not $31.2M, so leverage is understated.",
+      "evidence": "Ridge Hauling's acquisition is expected to close in the first quarter, subject to state regulatory approval."
+    },
+    {
+      "id": "aro_debt_like",
+      "category": "other",
+      "difficulty": "footnote",
+      "issue": "About $28M of landfill closure and post-closure obligations are excluded from net debt and should be treated as debt-like in valuation.",
+      "evidence": "These obligations are not included in the net debt figure presented in this memorandum."
+    },
+    {
+      "id": "largest_contract_rebid",
+      "category": "customer_concentration",
+      "difficulty": "cross_reference",
+      "issue": "The largest contract ($19.4M, roughly 14-16% of revenue) ends next June and goes to a competitive RFP in the spring.",
+      "evidence": "the city has announced it will issue a competitive request for proposals in the spring."
+    }
+  ],
+  "decoys": [
+    {
+      "id": "fuel_costs",
+      "issue": "Diesel fuel cost exposure",
+      "evidence": "recover approximately 90% of diesel cost changes within one quarter."
+    },
+    {
+      "id": "fleet_age",
+      "issue": "Fleet age and replacement capex",
+      "evidence": "the average age of the collection fleet is 4.1 years."
+    }
+  ],
+  "acceptable_recommendations": [
+    "needs_more_info",
+    "pass"
+  ]
+}

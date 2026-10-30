@@ -1,0 +1,49 @@
+{
+  "case_id": "h02-pinnacle",
+  "company_name": "Pinnacle Clinical Staffing",
+  "facts": {
+    "revenue_ltm_musd": 157.2,
+    "ebitda_ltm_musd": 15.8,
+    "revenue_growth_pct": 31,
+    "top_customer_pct": 5.4
+  },
+  "planted_flags": [
+    {
+      "id": "crisis_rate_cliff",
+      "category": "revenue_quality",
+      "difficulty": "footnote",
+      "issue": "38% of revenue is billed at crisis rates under contracts expiring within six months, with renewals expected 25-30% lower, so headline growth and EBITDA are not sustainable.",
+      "evidence": "these contracts expire within the next six months, and the company expects renewal bill rates 25% to 30% lower."
+    },
+    {
+      "id": "receivables_build",
+      "category": "working_capital",
+      "difficulty": "arithmetic",
+      "issue": "Receivables grew about 73% ($18.4M to $31.9M) while revenue grew 31%, so days sales outstanding rose from roughly 56 to 74 days: collections are slowing or revenue quality is weakening.",
+      "evidence": "Accounts receivable were $31.9 million at period end, compared with $18.4 million a year earlier."
+    },
+    {
+      "id": "worker_classification",
+      "category": "legal_regulatory",
+      "difficulty": "cross_reference",
+      "issue": "22% of clinicians are classified as independent contractors and the state Department of Labor has opened an inquiry into worker classification; reclassification would add payroll tax and benefits cost.",
+      "evidence": "the company received an information request from the state Department of Labor regarding worker classification"
+    }
+  ],
+  "decoys": [
+    {
+      "id": "gross_margin_lag",
+      "issue": "First-half gross margin decline",
+      "evidence": "second-half gross margin returned to the prior-year level."
+    },
+    {
+      "id": "q1_fcf",
+      "issue": "Negative first-quarter free cash flow",
+      "evidence": "prepays its annual malpractice insurance premium in January."
+    }
+  ],
+  "acceptable_recommendations": [
+    "needs_more_info",
+    "pass"
+  ]
+}

@@ -11,6 +11,9 @@ from statistics import mean
 
 METRICS = (
     "flag_recall",
+    "recall_arithmetic",
+    "recall_footnote",
+    "recall_cross_reference",
     "followup_coverage",
     "decoy_false_alarm",
     "grounding",

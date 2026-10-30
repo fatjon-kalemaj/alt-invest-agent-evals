@@ -6,6 +6,9 @@ from .stats import METRICS
 
 LABELS = {
     "flag_recall": "Red-flag recall",
+    "recall_arithmetic": "  · flags that need arithmetic",
+    "recall_footnote": "  · flags in a footnote",
+    "recall_cross_reference": "  · flags that need two sections joined",
     "followup_coverage": "Follow-up question coverage",
     "decoy_false_alarm": "Decoy false-alarm rate (lower is better)",
     "grounding": "Evidence quotes found verbatim",
@@ -26,7 +29,7 @@ def render(config: dict, summary: dict) -> str:
     lines = [
         title,
         "",
-        f"{ops['n_cases']} cases × {config['reps']} reps · judge `{config['judge_model']}` · dataset `{config['dataset_hash']}`",
+        f"{ops['n_cases']} cases × {config['reps']} reps · judge `{config['judge_model']}` · dataset `{config.get('dataset', 'core')}` `{config['dataset_hash']}`",
         "",
         "| Metric | Mean | 95% CI (cases) |",
         "|---|---|---|",

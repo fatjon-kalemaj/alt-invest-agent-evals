@@ -1,0 +1,49 @@
+{
+  "case_id": "h05-clearwater",
+  "company_name": "Clearwater Specialty Pharmacy",
+  "facts": {
+    "revenue_ltm_musd": 212.0,
+    "ebitda_ltm_musd": 16.1,
+    "revenue_growth_pct": 19,
+    "top_customer_pct": 29
+  },
+  "planted_flags": [
+    {
+      "id": "biosimilar_erosion",
+      "category": "revenue_quality",
+      "difficulty": "cross_reference",
+      "issue": "44% of revenue comes from one drug whose first biosimilar launches next year, and payers usually switch patients within 12-18 months.",
+      "evidence": "The first biosimilar to Veltrimab is expected to launch in the second half of next year."
+    },
+    {
+      "id": "dir_one_time",
+      "category": "quality_of_earnings",
+      "difficulty": "arithmetic",
+      "issue": "$4.2M of prior-year DIR credits sit in this year's gross profit; excluding them, EBITDA is about $11.9M, not $16.1M.",
+      "evidence": "Gross profit includes $4.2 million of DIR fee reconciliation credits received this year relating to claims from prior years."
+    },
+    {
+      "id": "license_change_of_ownership",
+      "category": "key_person",
+      "difficulty": "footnote",
+      "issue": "The pharmacy permit and payer credentials are in the founder's name; a sale triggers board approval and 60-120 days of re-credentialing, putting revenue at risk around closing.",
+      "evidence": "A change of ownership requires approval of the state board of pharmacy and re-credentialing with payers"
+    }
+  ],
+  "decoys": [
+    {
+      "id": "march_volume_dip",
+      "issue": "6% prescription volume dip in March",
+      "evidence": "volumes recovered by May and the migration is complete."
+    },
+    {
+      "id": "ldd_access",
+      "issue": "Dependence on limited-distribution drug access",
+      "evidence": "all six agreements were renewed this year for three-year terms."
+    }
+  ],
+  "acceptable_recommendations": [
+    "needs_more_info",
+    "pass"
+  ]
+}

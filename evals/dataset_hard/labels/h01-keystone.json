@@ -1,0 +1,58 @@
+{
+  "case_id": "h01-keystone",
+  "company_name": "Keystone Industrial Distribution",
+  "facts": {
+    "revenue_ltm_musd": 96.0,
+    "ebitda_ltm_musd": {
+      "any_of": [
+        14.2,
+        19.1,
+        18.1
+      ]
+    },
+    "revenue_growth_pct": 9,
+    "top_customer_pct": 22.5
+  },
+  "derived_facts": [
+    "top_customer_pct"
+  ],
+  "planted_flags": [
+    {
+      "id": "bridge_gap",
+      "category": "quality_of_earnings",
+      "difficulty": "arithmetic",
+      "issue": "The EBITDA bridge does not reconcile: reported $14.2M plus $3.9M of listed adjustments is $18.1M, not the $19.1M Adjusted EBITDA claimed, leaving $1.0M unexplained.",
+      "evidence": "Management Adjusted EBITDA of $19.1 million reflects the adjustments summarized below."
+    },
+    {
+      "id": "top_customer_dual_source",
+      "category": "customer_concentration",
+      "difficulty": "footnote",
+      "issue": "The largest customer (about 22% of revenue) has given notice it will move to dual-sourcing next year, putting a large share of its volume at risk.",
+      "evidence": "Customer A notified the company that it will move to a dual-source supply arrangement beginning next fiscal year."
+    },
+    {
+      "id": "related_party_rent",
+      "category": "quality_of_earnings",
+      "difficulty": "cross_reference",
+      "issue": "Distribution centers are leased from the CEO's entity at $0.6M versus $2.1M market rent on month-to-month terms; normalized EBITDA is about $1.5M lower once rent goes to market.",
+      "evidence": "an independent appraisal commissioned by the company estimated market rent at $2.1 million per year."
+    }
+  ],
+  "decoys": [
+    {
+      "id": "inventory_writedown",
+      "issue": "$1.6M inventory write-down",
+      "evidence": "no remaining inventory from that line is held."
+    },
+    {
+      "id": "revolver_draw",
+      "issue": "Revolver borrowing",
+      "evidence": "has repaid the balance in full by the fourth quarter in each of the last five years."
+    }
+  ],
+  "acceptable_recommendations": [
+    "needs_more_info",
+    "pass"
+  ]
+}

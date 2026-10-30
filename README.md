@@ -76,6 +76,18 @@ What this shows, including what it does not:
 
 `results/baseline/` holds the Opus 5.5 · v2 run that CI compares against.
 
+### The hard set
+
+The first run showed recall was saturated, so there is a second dataset, `evals/dataset_hard/`: 6 CIMs, 16 planted flags and 13 decoys. Run it with `--dataset hard`. Each flag is tagged by what it takes to find it, and recall is reported per tag:
+
+| Tag | Example |
+|---|---|
+| `arithmetic` | Receivables rose 73% while revenue rose 31%. The document gives both balances but never says DSO went from 56 to 74 days. |
+| `footnote` | The largest customer has given notice it will dual-source next year. It sits in a footnote under the customer table. |
+| `cross_reference` | Revenue and EBITDA are pro forma for an acquisition that has not closed. The headline figure is in one paragraph and the closing condition in the next. |
+
+Some facts on this set have more than one defensible answer, such as pro forma versus standalone revenue. Their labels list every accepted figure instead of picking one. The share of the largest customer sometimes has to be computed from a dollar amount.
+
 ## Quickstart
 
 ```bash
@@ -102,7 +114,8 @@ Each run writes `config.json` (model, effort, prompt hash, dataset hash, git SHA
 ```
 src/cimscreen/        the agent: schema, prompts (v1 naive, v2 tuned), one API call
 src/cimeval/          the harness: graders, judge, stats, runner, compare, report
-evals/dataset/        8 synthetic CIMs and their gold labels
+evals/dataset/        8 synthetic CIMs and their gold labels (core set)
+evals/dataset_hard/   6 harder CIMs: arithmetic, footnotes, cross-references
 evals/judge_calibration.jsonl   hand-labelled judge verdicts
 tests/                offline tests, no API key
 .github/workflows/    ci.yml on every push; evals.yml on demand or with the run-evals PR label

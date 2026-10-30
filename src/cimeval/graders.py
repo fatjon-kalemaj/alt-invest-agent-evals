@@ -22,7 +22,11 @@ def _close(a: float, b: float) -> bool:
     return abs(a - b) <= max(0.051, 0.001 * abs(b))
 
 
-def fact_correct(field: str, expected: float | None, got: float | None) -> bool:
+def fact_correct(field: str, expected, got: float | None) -> bool:
+    # A label can accept several figures when the document itself gives more than
+    # one defensible answer (reported vs adjusted EBITDA, pro forma vs standalone).
+    if isinstance(expected, dict):
+        return any(fact_correct(field, e, got) for e in expected["any_of"])
     if expected is None:
         return got is None
     if got is None:
@@ -37,7 +41,7 @@ def grade_facts(case: Case, screen: Screen) -> dict:
     expected = case.labels["facts"]
     got = screen.financials.model_dump()
     per_field = {f: fact_correct(f, expected[f], got[f]) for f in FACT_FIELDS}
-    null_fields = [f for f in FACT_FIELDS if expected[f] is None]
+    null_fields = [f for f in FACT_FIELDS if expected[f] is None]  # any_of labels never include null
     return {
         "fact_accuracy": sum(per_field.values()) / len(FACT_FIELDS),
         # Did it decline to invent a number the document never states?

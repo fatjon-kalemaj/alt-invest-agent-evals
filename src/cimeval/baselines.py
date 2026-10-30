@@ -21,7 +21,7 @@ def oracle_screen(case: Case) -> Screen:
     return Screen(
         company_name=labels["company_name"],
         sector="(oracle)",
-        financials=Financials(**labels["facts"]),
+        financials=Financials(**{k: v["any_of"][0] if isinstance(v, dict) else v for k, v in labels["facts"].items()}),
         red_flags=flags,
         dd_questions=questions,
         recommendation=Recommendation(labels["acceptable_recommendations"][0]),
