@@ -6,12 +6,18 @@ on:
     inputs:
       prompt:
         description: Prompt version
+        type: choice
+        options: [v2, v1]
         default: v2
       reps:
         description: Reps per case
-        default: "2"
+        type: number
+        default: 2
   pull_request:
     types: [labeled, synchronize]
+
+permissions:
+  contents: read
 
 jobs:
   live:
@@ -24,7 +30,11 @@ jobs:
       - uses: astral-sh/setup-uv@v5
       - run: uv sync
       - name: Run eval
-        run: uv run cimeval run --agent claude --prompt "${{ inputs.prompt || 'v2' }}" --reps "${{ inputs.reps || '2' }}" --out runs
+        # Inputs reach the shell as environment variables, never interpolated into the script.
+        env:
+          PROMPT: ${{ inputs.prompt || 'v2' }}
+          REPS: ${{ inputs.reps || 2 }}
+        run: uv run cimeval run --agent claude --prompt "$PROMPT" --reps "$REPS" --out runs
       - name: Compare with committed baseline
         run: |
           NEW=$(ls -d runs/*/ | tail -1)
